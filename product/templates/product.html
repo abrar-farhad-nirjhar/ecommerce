@@ -1,0 +1,62 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% block head %}
+<title>{{product.title}}</title>
+<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+{% endblock head %}
+
+{% block content %}
+    <div class="back-styling center-align">{{product.name}}</div>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col s12 m6 box-container">
+
+                  <div id="svgimages"></div>
+<div class="center-align">
+                  
+                  </div>
+                  
+
+            </div>
+            <div class="col s12 m6 box-container">
+                <div class="svg-container">
+
+                    <div class="instructions center-align">
+                      Please click on any segment of the images and pick a color from the color picker to preview.
+                    </div>
+
+                    <div class="center-align" id="picker"></div>
+
+                    <div class="cart-add">
+                        <input type="number" value="0" name="count" style="width:50px" id="count" />
+                        <a class="waves-effect waves-light btn">Add To Cart</a>
+                    </div>
+                
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
+<script>
+
+
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+  
+  
+</script>
+
+
+<script src="{% static 'js/product.js' %}"></script>
+
+{% endblock scripts %}

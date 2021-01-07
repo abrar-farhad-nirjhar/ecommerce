@@ -1,0 +1,49 @@
+{% extends 'home_base.html' %}
+{% load static %}
+{% block head %}
+<title>Wallet Ecommerce</title>
+<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+{% endblock head %}
+
+{% block content %}
+    <div class="">
+
+    <div class="page-background">
+            <div class="backgroundImageText">BEST WALLETS MONEY CAN BUY</div>
+
+        <img class="backgroundImage" src="https://images.wallpaperscraft.com/image/wallet_leather_glasses_169543_3840x2160.jpg" alt="">
+    </div>
+    <div class="items-section" id="items-div-section">
+        
+        
+        
+        <div class="center-align back-styling"><h5>Items</h5></div>
+        <div class="items">
+        <div class="row">
+            {% for product in products %}
+                
+    
+
+  
+    <div class="col s12 m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{product.main_image}}">
+          <span class="card-title">{{product.title}}</span>
+        </div>
+        
+        <div class="card-action">
+          <a href="{% url 'product_page' product.id %}" class="center-align">View Details</a>
+        </div>
+      </div>
+    </div>
+  
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

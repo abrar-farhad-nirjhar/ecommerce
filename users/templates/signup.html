@@ -1,0 +1,61 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+
+{% block head %}
+    
+    <link rel="stylesheet" href="{% static 'styles/auth.css' %}" />
+    <title>Sign Up</title>
+{% endblock head %}
+
+
+{% block content %}
+<div  class="valign-wrapper">
+    <div class="container center-align">
+        <div class="card">
+            <div class="card-title">
+                Sign Up to Wallet Store
+            </div>
+            <div class="card-content">
+                <form method="post" class="col-12" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  id="username"  name="username" type="text" class="validate" required/>
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  id="email"  name="email" type="email" class="validate" required/>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-field col s12">
+                        <input  name="password" id="password" type="password" class="validate" required/>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col s12">
+                        <button class="btn waves-effect waves-light full-width" type="submit" name="action">Sign Up
+                    </button>
+                </div>
+                </div>
+                <div class="row">
+                     <div class="col s12 red-text text-lighten-1">
+                        <p >{{error_message}}</p>
+                     </div>
+                    </div>
+                <div class="row">
+                     <div class="col s12">
+                        <p >Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+                     </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock  %}

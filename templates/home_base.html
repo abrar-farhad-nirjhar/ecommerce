@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+
+    <!-- Compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
+    
+
+    {% block head %} 
+    {% endblock %}
+  </head>
+
+  <body>
+  <nav class="brown darken-1" >
+    <div class="nav-wrapper" style="padding:0px 10px;">
+      <a href="#" class="brand-logo" >Wallet Store</a>
+      <a href="#" class='sidenav-trigger' data-target="mobile-nav">
+      <i class="material-icons">menu</i>
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
+        <li><a href="{% if user.is_authenticated %} {% url 'home' %} {% else %} {% url 'signin' %} {% endif %}">
+        <i class="material-icons">shopping_cart</i>
+        </a></li>
+        {% if user.is_authenticated %}
+            <li class="waves-effect"><a href="{% url 'signout' %}">Sign Out</a></li>
+        {% else %} 
+            <li class="waves-effect"><a href="{% url 'signin' %}">Sign In</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <ul id="mobile-nav" class="sidenav brown darken-1">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    {% comment %} <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li> {% endcomment %}
+    <li><a href="#!">Wallet Store</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="waves-effect" href="{% if user.is_authenticated %} {% url 'home' %} {% else %} {% url 'signin' %} {% endif %}">
+    <i class="material-icons">shopping_cart</i> Shopping Cart
+    </a></li>
+    
+    {% if user.is_authenticated %}
+            <li class="waves-effect"><a href="{% url 'signout' %}">Sign Out</a></li>
+        {% else %} 
+            <li><a href="{% url 'signin' %}">Sign In</a></li>
+        {% endif %}
+  </ul>
+
+  
+    {% block content %} 
+    {% endblock content %} 
+
+    {% block scripts %} 
+    {% endblock scripts %}
+    
+
+    <script>
+    
+
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
+  </script>
+  </body>
+</html>

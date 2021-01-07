@@ -1,0 +1,126 @@
+{% extends 'home_base.html' %}
+
+
+{% block content %}
+<div id="invoice">
+            <div class="invoice-header">
+              <div class="row section">
+                <div class="col s12 m6 l6">
+                  <p>To,
+                    <br/>
+                    <span class="strong">Buyer Info</span>
+                    <br/>
+                    <span>Address line 1</span>
+                    <br/>
+                    <span>Address line 2</span>
+                    <br/>
+                    <span>phone number</span>
+                  </p>
+                </div>
+
+                <div class="col s12 m6 l6">
+                  <div class="invoce-company-address right-align">
+                    <span class="invoice-icon"><i class="mdi-social-location-city cyan-text"></i></span>
+
+                    <p><span class="strong">Wallet Store</span>
+                      <br/>
+                      <span>Bug Fixers</span>
+                      <br/>
+                    </p>
+                  </div>
+
+                  <div class="invoce-company-contact right-align">
+                    <span class="invoice-icon"><i class="mdi-communication-quick-contacts-mail cyan-text"></i></span>
+                    <p><span class="strong">Mirpur DOHS</span>
+                        <br>
+                        <span>Address line 2</span>
+                      <br/>
+                      <span>Best Wallets Money can buy</span>
+                      <br/>
+                      
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="invoice-lable">
+              <div class="row">
+                <div class="col s12 m3 l3 cyan" style="width:100%">
+                  <h4 class="white-text invoice-text">INVOICE</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="invoice-table">
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <table class="striped">
+                    <thead>
+                      <tr>
+                        <th data-field="no">No</th>
+                        <th data-field="item">Item</th>
+                        <th data-field="uprice">Unit Price</th>
+                        <th data-field="price">Unit</th>
+                        <th data-field="price">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1.</td>
+                        <td>MacBook Pro</td>
+                        <td>$ 1,299.00</td>
+                        <td>2</td>
+                        <td>$ 1,100.00</td>
+                      </tr>
+                      <tr>
+                        <td>2.</td>
+                        <td>iMAC</td>
+                        <td>$ 1,099.00</td>
+                        <td>2</td>
+                        <td>$ 2,198.00</td>
+                      </tr>
+                      <tr>
+                        <td>3.</td>
+                        <td>iPhone</td>
+                        <td>$ 299.00</td>
+                        <td>5</td>
+                        <td>$ 1,495.00</td>
+                      </tr>
+                      <tr>
+                        <td>4.</td>
+                        <td>iPad 3</td>
+                        <td>$399.00</td>
+                        <td>1</td>
+                        <td>$ 399.00</td>  
+                      </tr>
+                      <tr>
+                        <td>5.</td>
+                        <td>iPod</td>
+                        <td>$49.00</td>
+                        <td>2</td>
+                        <td>$ 98.00</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3"></td>
+                        <td>Sub Total:</td>
+                        <td>$ 5,290.00</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3"></td>
+                        <td>Service Tax</td>
+                        <td>11.00%</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="cyan"></td>
+                        <td class="cyan white-text">Grand Total</td>
+                        <td class="cyan strong white-text">$ 5,871.90</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+            </div>
+{% endblock content %}
