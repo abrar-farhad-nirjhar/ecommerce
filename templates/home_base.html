@@ -1,84 +1,504 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marnon E-commerce Site</title>
+
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-
-
+    <!-- Materialize icon font -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'styles/styles.min.css' %}" />
     <!-- Compiled and minified JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
-    
-
-    {% block head %} 
-    {% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./scripts.js" defer></script>
   </head>
-
   <body>
-  <nav class="brown darken-1" >
-    <div class="nav-wrapper" style="padding:0px 10px;">
-      <a href="#" class="brand-logo" >Wallet Store</a>
-      <a href="#" class='sidenav-trigger' data-target="mobile-nav">
-      <i class="material-icons">menu</i>
-      </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        
-        <li><a href="{% if user.is_authenticated %} {% url 'home' %} {% else %} {% url 'signin' %} {% endif %}">
-        <i class="material-icons">shopping_cart</i>
-        </a></li>
-        {% if user.is_authenticated %}
-            <li class="waves-effect"><a href="{% url 'signout' %}">Sign Out</a></li>
+    <header>
+      <div class="top-header">
+        <div class="left-top-header">
+          <a href="/" class="logo"
+            ><img src="media/Legame.png" alt="" />LEGAME</a
+          >
+          <ul class="pages">
+            <li><a href="#">Items</a></li>
+            <li><a href="#">How to order</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a
+            class="dropdown-trigger hide-on-large-only"
+            href="#"
+            data-target="dropdown1"
+            ><i class="material-icons">arrow_drop_down_circle</i></a
+          >
+          <ul
+            id="dropdown1"
+            class="dropdown-content hide-on-large-only"
+            style="max-width: 100%"
+          >
+            <li><a href="#">Items</a></li>
+            <li><a href="#">How to order</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="right-top-header">
+          <i class="material-icons hide-on-large-only menu-btn">menu</i>
+          <i class="material-icons">favorite_border</i>
+          <i class="material-icons">shopping_cart</i>
+          <div class="search hide-search">
+            <div class="search-box"><input type="text" /></div>
+          </div>
+          <i class="material-icons search-open-icon">search</i>
+          <i class="material-icons search-close-icon hide">close</i>
+          
+          {% if user.is_authenticated %}
+            <a href="{% url 'signout' %}" class="login-btn">Logout</a>
         {% else %} 
-            <li class="waves-effect"><a href="{% url 'signin' %}">Sign In</a></li>
+            <a href="{% url 'signin' %}" class="login-btn">Login</a>
         {% endif %}
-      </ul>
-    </div>
-  </nav>
-
-  <ul id="mobile-nav" class="sidenav brown darken-1">
-    <li><div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
+        </div>
       </div>
-      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li>
-    {% comment %} <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li> {% endcomment %}
-    <li><a href="#!">Wallet Store</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="waves-effect" href="{% if user.is_authenticated %} {% url 'home' %} {% else %} {% url 'signin' %} {% endif %}">
-    <i class="material-icons">shopping_cart</i> Shopping Cart
-    </a></li>
-    
-    {% if user.is_authenticated %}
-            <li class="waves-effect"><a href="{% url 'signout' %}">Sign Out</a></li>
-        {% else %} 
-            <li><a href="{% url 'signin' %}">Sign In</a></li>
-        {% endif %}
-  </ul>
-
-  
-    {% block content %} 
-    {% endblock content %} 
-
-    {% block scripts %} 
-    {% endblock scripts %}
-    
-
-    <script>
-    
-
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-        
-  </script>
+    </header>
+    <div class="content">
+      <div class="overlay hide hide-on-large-only"></div>
+      <aside class="sidebar">
+        <ul>
+          <li><a href="#" class="active">Mobile </a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Watch</a></li>
+          <li><a href="#">Headphone</a></li>
+          <li><a href="#">Monitor</a></li>
+          <li><a href="#">TV</a></li>
+        </ul>
+      </aside>
+      <div class="right-side">
+        <section class="banner">
+          <div class="row">
+            <div class="slider col s12">
+              <div class="carousel carousel-slider">
+                <a class="carousel-item" href="#one!"
+                  ><img
+                    src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                /></a>
+                <a class="carousel-item" href="#two!"
+                  ><img
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                /></a>
+                <a class="carousel-item" href="#three!"
+                  ><img
+                    src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                /></a>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <img
+                class="sub-banner-image"
+                src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                alt=""
+              />
+            </div>
+            <div class="col s12 m4">
+              <img
+                class="sub-banner-image"
+                src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                alt=""
+              />
+            </div>
+            <div class="col s12 m4">
+              <img
+                class="sub-banner-image"
+                src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                alt=""
+              />
+            </div>
+          </div>
+        </section>
+        <section class="product">
+          <div class="row">
+            <div class="col s12 product-header">
+              <h4>New Products</h4>
+              <a href="#">View All</a>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    class="activator"
+                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  />
+                  <a
+                    class="btn-floating halfway-fab waves-effect waves-light pulse teal"
+                    ><i class="material-icons">shopping_cart</i></a
+                  >
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p><a href="./details.html">This is a product</a></p>
+                  <p
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 1rem;
+                    "
+                  >
+                    <strong>$250</strong>
+                    <strong class="teal-text">Wallpaper</strong>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Descriptions<i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="center">
+                <button class="waves-effect waves-light btn-large teal">
+                  Show More
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <footer>
+      <p>Legame || &copy; 2021 All Rights Reserved</p>
+      <p>Developed by: <a href="https://bugfixers.net/">Bugfixers LTD.</a></p>
+    </footer>
   </body>
 </html>

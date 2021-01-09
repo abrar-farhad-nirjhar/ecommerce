@@ -1,62 +1,293 @@
-{% extends 'home_base.html' %}
 {% load static %}
-{% block head %}
-<title>{{product.title}}</title>
-<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
-{% endblock head %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marnon Details Page</title>
 
-{% block content %}
-    <div class="back-styling center-align">{{product.name}}</div>
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col s12 m6 box-container">
-
-                  <div id="svgimages"></div>
-<div class="center-align">
-                  
-                  </div>
-                  
-
-            </div>
-            <div class="col s12 m6 box-container">
-                <div class="svg-container">
-
-                    <div class="instructions center-align">
-                      Please click on any segment of the images and pick a color from the color picker to preview.
-                    </div>
-
-                    <div class="center-align" id="picker"></div>
-
-                    <div class="cart-add">
-                        <input type="number" value="0" name="count" style="width:50px" id="count" />
-                        <a class="waves-effect waves-light btn">Add To Cart</a>
-                    </div>
-                
-                </div>
-            </div>
-        
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize icon font -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'styles/styles.min.css' %}" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./scripts.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="top-header">
+        <div class="left-top-header">
+          <a href="/" class="logo"
+            ><img src="media/LEGAME.png" alt="" />LEGAME</a
+          >
+          <ul class="pages">
+            <li><a href="#">Items</a></li>
+            <li><a href="#">How to order</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a
+            class="dropdown-trigger hide-on-large-only"
+            href="#"
+            data-target="dropdown1"
+            ><i class="material-icons">arrow_drop_down_circle</i></a
+          >
+          <ul
+            id="dropdown1"
+            class="dropdown-content hide-on-large-only"
+            style="max-width: 100%"
+          >
+            <li><a href="#">Items</a></li>
+            <li><a href="#">How to order</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
         </div>
-
+        <div class="right-top-header">
+          <i class="material-icons hide-on-large-only menu-btn">menu</i>
+          <i class="material-icons">favorite_border</i>
+          <i class="material-icons">shopping_cart</i>
+          <div class="search hide-search">
+            <div class="search-box"><input type="text" /></div>
+          </div>
+          <i class="material-icons search-open-icon">search</i>
+          <i class="material-icons search-close-icon hide">close</i>
+           {% if user.is_authenticated %}
+            <a href="{% url 'signout' %}" class="login-btn">Logout</a>
+        {% else %} 
+            <a href="{% url 'signin' %}" class="login-btn">Login</a>
+        {% endif %}
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="overlay hide hide-on-large-only"></div>
+      <aside class="sidebar">
+        <ul>
+          <li><a href="#" class="active">Mobile </a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Watch</a></li>
+          <li><a href="#">Headphone</a></li>
+          <li><a href="#">Monitor</a></li>
+          <li><a href="#">TV</a></li>
+        </ul>
+      </aside>
+      <div class="right-side">
+        <div class="product-details">
+          <div class="row">
+            <div class="col m5">
+              <div class="product-image" id="p-image">
+                {% comment %} <img src="https://picsum.photos/200" alt="" /> {% endcomment %}
+              </div>
+              <div class="row" id="sub-images">
+                <div class="col s3">
+                  <div class="product-sub-image">
+                    <img src="https://picsum.photos/seed/picsum/200" alt="" />
+                    <span>Front</span>
+                  </div>
+                </div>
+                <div class="col s3">
+                  <div class="product-sub-image">
+                    <img src="https://picsum.photos/200" alt="" />
+                    <span>Back</span>
+                  </div>
+                </div>
+                <div class="col s3">
+                  <div class="product-sub-image">
+                    <img src="https://picsum.photos/seed/picsum/200" alt="" />
+                    <span>Left</span>
+                  </div>
+                </div>
+                <div class="col s3">
+                  <div class="product-sub-image">
+                    <img src="https://picsum.photos/200" alt="" />
+                    <span>Right</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col m7">
+              <div class="product-info">
+                <h4>This is a product</h4>
+                <div style="display: flex; align-items: center">
+                  <span
+                    style="white-space: nowrap; margin-right: 1rem; width: 50%"
+                  >
+                    <p><strong>Category : </strong>Wallpaper</p>
+                    <p><strong>Price : </strong>{{product.price}}</p>
+                  </span>
+                  <div class="product-btn">
+                    <button class="waves-effect waves-light btn btn-small">
+                      <i class="material-icons left">shopping_cart</i>Add to
+                      Cart
+                    </button>
+                    <button
+                      class="waves-effect waves-light btn btn-small grey darken-4"
+                    >
+                      <i class="material-icons left">favorite</i>Add to
+                      Whitelist
+                    </button>
+                  </div>
+                </div>
+                <div class="product-desc">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquam quis nisi laborum consectetur voluptatibus nam
+                    mollitia quasi inventore quibusdam aspernatur id ea nemo
+                    nobis neque labore sapiente, facere corporis totam?
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquam quis nisi laborum consectetur voluptatibus nam
+                    mollitia quasi inventore quibusdam aspernatur id ea nemo
+                    nobis neque labore sapiente, facere corporis totam?
+                  </p>
+                </div>
+                <h5>Product Options</h5>
+                
+                {% comment %} <select name="" >
+                  
+                </select> {% endcomment %}
+                <div class="input-field" id="options" >
+                  {% comment %} <select   style="display:block">
+                  <div ></div>
+                    <option value="" disabled selected>
+                      Choose your option
+                    </option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select> {% endcomment %}
+                </div>
+                <div id='if-texts-present'>
+                </div>
+                
+                <div class="input-field" id="texts">
+                </div>
+                <p><strong>Color Pallet</strong></p>
+                <div class="row">
+                  <div class="col s3">
+                    <div
+                      class="pallet"
+                      style="
+                        background-color: #0096877e;
+                        border: 3px solid #00968788;
+                      "
+                     onclick='changeColor(`#0096877e`)'></div>
+                  </div>
+                  <div class="col s3">
+                    <div
+                      class="pallet"
+                      style="
+                        background-color: #9c27b07e;
+                        border: 3px solid #9c27b088;
+                      "
+                    onclick='changeColor(`#9c27b07e`)'></div>
+                  </div>
+                  <div class="col s3">
+                    <div
+                      class="pallet"
+                      style="
+                        background-color: #3f51b57e;
+                        border: 3px solid #3f51b588;
+                      "
+                    onclick='changeColor(`#3f51b57e`)'></div>
+                  </div>
+                  <div class="col s3">
+                    <div
+                      class="pallet"
+                      style="
+                        background-color: #ff98007e;
+                        border: 3px solid #ff980088;
+                      "
+                    onclick='changeColor(`#ff98007e`)'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-{% endblock content %}
+    <footer>
+      <p>Legame || &copy; 2021 All Rights Reserved</p>
+      <p>Developed by: <a href="https://bugfixers.net/">Bugfixers LTD.</a></p>
+    </footer>
+    <script>
+    //slider activation
+const options = {
+  fullWidth: true,
+  indicators: true,
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.carousel')
+  var instances = M.Carousel.init(elems, options)
+})
 
-{% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+//select bar activation
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, options);
+})
 
-<script>
+//dropdown activation
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(elems, options);
+});
 
+//search bar selector
+const search = document.querySelector('.search')
+const openIcon = document.querySelector('.search-open-icon')
+const closeIcon = document.querySelector('.search-close-icon')
 
+openIcon.addEventListener('click', () => {
+  search.classList.remove('hide-search')
+  closeIcon.classList.remove('hide')
+  openIcon.classList.add('hide')
+})
+closeIcon.addEventListener('click', () => {
+  search.classList.add('hide-search')
+  openIcon.classList.remove('hide')
+  closeIcon.classList.add('hide')
+})
 
-$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-  
-  
-</script>
+//product image selector
+const productImage = document.querySelector(".product-image img")
+const productSubImages = document.querySelectorAll(".product-sub-image")
 
+productSubImages.forEach(subImage => {
+  subImage.addEventListener("click", function (e) {
+    const subImageUrl = this.children[0].getAttribute("src")
+    productImage.setAttribute("src", subImageUrl)
+  })
+})
 
-<script src="{% static 'js/product.js' %}"></script>
+//sidebar selector
+const sidebar = document.querySelector(".sidebar")
+const menu = document.querySelector(".menu-btn")
+const overlay = document.querySelector(".overlay")
 
-{% endblock scripts %}
+menu.addEventListener("click", function () {
+  sidebar.classList.toggle("show")
+  overlay.classList.toggle("hide")
+})
+overlay.addEventListener("click", function () {
+  sidebar.classList.remove("show")
+  overlay.classList.add("hide")
+})</script>
+    <script src="{% static 'js/product.js' %}"></script>
+  </body>
+</html>
