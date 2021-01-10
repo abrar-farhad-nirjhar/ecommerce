@@ -35,3 +35,6 @@ def add_to_cart(request):
 
 def invoice(request):
     return render(request, 'invoice.html')
+
+def checkout(request):
+    return render(request, 'checkout.html')

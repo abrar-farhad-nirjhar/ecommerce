@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marnon E-commerce Site | Checkout</title>
+
+    <!-- fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize icon font -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'dist/styles.min.css' %}" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./scripts.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="top-header">
+        <div class="left-top-header">
+          <a href="/" class="logo"
+            ><img src="media/Legame.png" alt="" />LEGAME</a
+          >
+          <ul class="pages">
+            <li><a href="#">Items</a></li>
+            <li><a href="#">How to order</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a
+            class="dropdown-trigger hide-on-large-only"
+            href="#"
+            data-target="dropdown1"
+            ><i class="material-icons">arrow_drop_down_circle</i></a
+          >
+          <ul
+            id="dropdown1"
+            class="dropdown-content hide-on-large-only"
+            style="max-width: 100%"
+          >
+            <li><a href="#" class="brown-text">Items</a></li>
+            <li><a href="#" class="brown-text">How to order</a></li>
+            <li><a href="#" class="brown-text">Story</a></li>
+            <li><a href="#" class="brown-text">News</a></li>
+            <li><a href="#" class="brown-text">Contact</a></li>
+          </ul>
+        </div>
+        <div class="right-top-header">
+          <i class="material-icons hide-on-large-only menu-btn">menu</i>
+          <i class="material-icons">favorite_border</i>
+          <i class="material-icons">shopping_cart</i>
+          <div class="search hide-search">
+            <div class="search-box"><input type="text" /></div>
+          </div>
+          <i class="material-icons search-open-icon">search</i>
+          <i class="material-icons search-close-icon hide">close</i>
+
+          {% if user.is_authenticated %}
+          <a href="{% url 'signout' %}" class="login-btn">Logout</a>
+          {% else %}
+          <a href="{% url 'signin' %}" class="login-btn">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="overlay hide hide-on-large-only"></div>
+      <aside class="sidebar">
+        <ul>
+          <li><a href="#" class="active">Mobile </a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Watch</a></li>
+          <li><a href="#">Headphone</a></li>
+          <li><a href="#">Monitor</a></li>
+          <li><a href="#">TV</a></li>
+        </ul>
+      </aside>
+      <div class="right-side">
+        <div class="checkout">
+          <div class="checkout-header">
+            <ul>
+              <li id="customer-details">
+                <span class="position active">1</span
+                ><span class="title">Customer Details</span>
+              </li>
+              <li id="payment-method">
+                <span class="position">2</span
+                ><span class="title">Payment Method</span>
+              </li>
+              <li id="confirmation">
+                <span class="position">3</span
+                ><span class="title">Confirmation</span>
+              </li>
+            </ul>
+          </div>
+          <div class="checkout-body">
+            <div class="customer-details">
+              <form action="#" onsubmit="return false">
+                <div class="row">
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter last name"
+                      id="first_name"
+                      type="text"
+                      class="validate"
+                    />
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter last name"
+                      id="last_name"
+                      type="text"
+                      class="validate"
+                    />
+                    <label for="last_name">Last Name</label>
+                  </div>
+                  <div class="col s12 input-field">
+                    <input
+                      placeholder="Enter email"
+                      id="email"
+                      type="email"
+                      class="validate"
+                    />
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="col m8 s12 input-field">
+                    <input
+                      placeholder="Enter address"
+                      id="address"
+                      type="text"
+                      class="validate"
+                    />
+                    <label for="address">Address</label>
+                  </div>
+                  <div class="col m4 s12 input-field">
+                    <input
+                      placeholder="Enter zip code"
+                      id="zip_code"
+                      type="text"
+                      class="validate"
+                    />
+                    <label for="zip_code">Zip Code</label>
+                  </div>
+                  <button
+                    class="waves-effect waves-light btn brown right confirm-details"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="payment-method hide">
+              <form action="#" onsubmit="return false">
+                <div class="payment-options">
+                  <p>
+                    <label>
+                      <input
+                        class="with-gap"
+                        name="payment"
+                        type="radio"
+                        checked
+                      />
+                      <span>Mastercard</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input class="with-gap" name="payment" type="radio" />
+                      <span>Visa</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input class="with-gap" name="payment" type="radio" />
+                      <span>Paypal</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input class="with-gap" name="payment" type="radio" />
+                      <span>Cash on delivery</span>
+                    </label>
+                  </p>
+                </div>
+                <div class="row">
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter card number"
+                      id="card_number"
+                      type="number"
+                      class="validate"
+                    />
+                    <label for="card_number">Card Number</label>
+                  </div>
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter cardholder"
+                      id="card_holder"
+                      type="text"
+                      class="validate"
+                    />
+                    <label for="card_holder">Cardholder</label>
+                  </div>
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter expiry "
+                      id="expiry_date"
+                      type="date"
+                      class="validate"
+                    />
+                    <label for="expiry_date">Expiry Time</label>
+                  </div>
+                  <div class="col m6 s12 input-field">
+                    <input
+                      placeholder="Enter CVC "
+                      id="cvc"
+                      type="number"
+                      class="validate"
+                    />
+                    <label for="cvc">CVC</label>
+                  </div>
+                  <div class="col s12">
+                    <p>
+                      <label>
+                        <input type="checkbox" />
+                        <span>Save my details for future purchases</span>
+                      </label>
+                    </p>
+                  </div>
+                  <button
+                    class="waves-effect waves-light btn brown right confirm-payment"
+                  >
+                    Confirm Payment
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="completed hide">
+              <h4 class="brown-text center">
+                Congratulation! Your checkout successfully completed
+              </h4>
+              <img src="{% static 'assets/completed.png' %}" alt="" />
+              <div class="center">
+                <button class="waves-effect waves-light btn-large brown">
+                  Go Back
+                </button>
+              </div>
+            </div>
+            <div class="products">
+              <ul>
+                <li>
+                  <div>
+                    <img
+                      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
+                      alt=""
+                    />
+                    <p>
+                      <a href="#">This product title</a>
+                      <span
+                        ><span>Category : Wallpaper</span
+                        ><span>Price : $104</span></span
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <img
+                      src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                      alt=""
+                    />
+                    <p>
+                      <a href="#">This product title</a>
+                      <span
+                        ><span>Category : Wallpaper</span
+                        ><span>Price : $104</span></span
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="right">Total: $208</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Legame || &copy; 2021 All Rights Reserved</p>
+      <div class="icons">
+        <div class="payment">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+        <div class="social">
+          <a href="#" target="_blank" rel="noopener noreferrer"
+            ><i class="fab fa-facebook-square"></i
+          ></a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i
+          ></a>
+        </div>
+      </div>
+      <p>Developed by: <a href="https://bugfixers.net/">Bugfixers LTD.</a></p>
+    </footer>
+
+    <script>
+      //slider activation
+      const options = {
+        fullWidth: true,
+        indicators: true,
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.carousel')
+        var instances = M.Carousel.init(elems, options)
+      })
+
+      //select bar activation
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select')
+        var instances = M.FormSelect.init(elems, options)
+      })
+
+      //dropdown activation
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger')
+        var instances = M.Dropdown.init(elems, options)
+      })
+
+      //search bar selector
+      const search = document.querySelector('.search')
+      const openIcon = document.querySelector('.search-open-icon')
+      const closeIcon = document.querySelector('.search-close-icon')
+
+      openIcon.addEventListener('click', () => {
+        search.classList.remove('hide-search')
+        closeIcon.classList.remove('hide')
+        openIcon.classList.add('hide')
+      })
+      closeIcon.addEventListener('click', () => {
+        search.classList.add('hide-search')
+        openIcon.classList.remove('hide')
+        closeIcon.classList.add('hide')
+      })
+
+      //product image selector
+      const productImage = document.querySelector('.product-image img')
+      const productSubImages = document.querySelectorAll('.product-sub-image')
+
+      productSubImages.forEach((subImage) => {
+        subImage.addEventListener('click', function (e) {
+          const subImageUrl = this.children[0].getAttribute('src')
+          productImage.setAttribute('src', subImageUrl)
+        })
+      })
+
+      //sidebar selector
+      const sidebar = document.querySelector('.sidebar')
+      const menu = document.querySelector('.menu-btn')
+      const overlay = document.querySelector('.overlay')
+
+      menu.addEventListener('click', function () {
+        sidebar.classList.toggle('show')
+        overlay.classList.toggle('hide')
+      })
+      overlay.addEventListener('click', function () {
+        sidebar.classList.remove('show')
+        overlay.classList.add('hide')
+      })
+
+      //checkout selector
+      const customerPosition = document.querySelector(
+        '#customer-details .position'
+      )
+      const paymentPosition = document.querySelector(
+        '#payment-method .position'
+      )
+      const customerDetails = document.querySelector('.customer-details')
+      const confirmDetails = document.querySelector('.confirm-details')
+      const paymentMethod = document.querySelector('.payment-method')
+      const confirmPayment = document.querySelector('.confirm-payment')
+      const completed = document.querySelector('.completed')
+      const products = document.querySelector('.products')
+
+      confirmDetails.addEventListener('click', function () {
+        paymentMethod.classList.remove('hide')
+        customerDetails.classList.add('hide')
+        customerPosition.classList.remove('active')
+        customerPosition.classList.add('done')
+        customerPosition.innerHTML = '<i class="fas fa-check"></i>'
+        paymentPosition.classList.add('active')
+      })
+      confirmPayment.addEventListener('click', function () {
+        paymentMethod.classList.add('hide')
+        products.classList.add('hide')
+        completed.classList.remove('hide')
+        paymentPosition.classList.add('done')
+        paymentPosition.classList.remove('active')
+        paymentPosition.innerHTML = '<i class="fas fa-check"></i>'
+      })
+    </script>
+  </body>
+</html>

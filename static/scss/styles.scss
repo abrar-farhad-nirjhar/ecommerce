@@ -1,0 +1,518 @@
+//variables
+$mutedWhite: #eee;
+$fontColor: #323232;
+$borderColor: #c7c7c7;
+$white: #ffffff;
+$themeColor: #795548;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 15px;
+  @media screen and (max-width: 992px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+  }
+}
+body {
+  background: $white;
+  color: $fontColor;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+a {
+  color: $themeColor;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: 0.3s;
+  background: #32323240;
+  z-index: 1;
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.content {
+  display: flex;
+  aside {
+    width: 20rem;
+    padding: 2rem;
+    padding-bottom: 3.6rem;
+    height: calc(100vh - 5.63rem);
+    overflow: auto;
+    background: $white;
+    border-right: 2px solid $mutedWhite;
+    ul {
+      list-style: none;
+      li {
+        a {
+          display: flex;
+          border-bottom: 1px solid $mutedWhite;
+          padding: 0.5rem;
+          &:hover {
+            background: $mutedWhite;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 992px) {
+      transition: 0.3s ease-in-out;
+      position: absolute;
+      left: -100%;
+      z-index: 11;
+      &.show {
+        left: 0;
+      }
+    }
+  }
+  .right-side {
+    width: 100%;
+    height: calc(100vh - 8.63rem);
+    overflow: auto;
+    padding: 0 1rem;
+    @media screen and (max-width: 992px) {
+      height: auto;
+    }
+  }
+}
+//header
+header {
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+    padding: 1rem 2rem 0.5rem;
+    background: $white;
+    border-bottom: 2px solid $mutedWhite;
+    .left-top-header {
+      display: flex;
+      align-items: center;
+      .logo {
+        font-size: 2.3rem;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        color: $fontColor;
+        img {
+          margin-right: 0.4rem;
+          width: 3rem;
+        }
+      }
+      @media screen and (max-width: 992px) {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .pages {
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
+        li {
+          a {
+            white-space: nowrap;
+            display: inline-block;
+            font-size: 1.2rem;
+            margin-left: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+          }
+        }
+      }
+      #dropdown1 {
+        max-width: 100%;
+        width: 15rem !important;
+      }
+    }
+    .right-top-header {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        justify-content: flex-end;
+      }
+      i {
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+      .login-btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 2rem;
+        border-radius: 0.3rem;
+        transition: 0.2s ease-in-out;
+        border: 1px solid $themeColor;
+        &:hover {
+          color: $white;
+          background: $themeColor;
+        }
+      }
+      .search {
+        position: absolute;
+        padding: 0 1rem;
+        border: 1px solid $borderColor;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        z-index: 11;
+        background: $white;
+        top: 0;
+        right: 2rem;
+        transform: translateX(-50%);
+        width: 17rem;
+        opacity: 1;
+        max-width: 250px;
+        transition: 0.5s ease-in-out;
+        @media screen and (max-width: 400px) {
+          right: unset;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 4rem;
+        }
+        .search-box {
+          input {
+            width: 100%;
+            margin-bottom: 0;
+            padding: 0;
+            border: none;
+            &:focus {
+              border: none;
+              box-shadow: none;
+            }
+          }
+        }
+        &.hide-search {
+          width: 0;
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+//banner
+.banner {
+  margin-top: 1rem;
+  .slider {
+    margin: 1rem 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .sub-banner-image {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+  }
+}
+
+//product
+.product {
+  margin-top: 2rem;
+  .product-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid $mutedWhite;
+    margin-bottom: 1rem;
+  }
+  img {
+    height: 15rem;
+    object-fit: cover;
+  }
+  .card-content {
+    padding-top: 2rem !important;
+  }
+  .card-title {
+    margin-bottom: 0.3rem !important;
+  }
+}
+
+//footer
+footer {
+  margin-top: 2rem;
+  padding: 0.5rem 2rem;
+  border-top: 2px solid $mutedWhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: $white;
+  z-index: 11;
+  @media screen and (max-width: 992px) {
+    position: unset;
+    margin-top: 0;
+  }
+  p {
+    margin: 0.5rem 0;
+  }
+  .icons {
+    display: flex;
+    .payment {
+      margin-right: 3rem;
+      i {
+        margin-left: 0.5rem;
+      }
+    }
+    .social {
+      a {
+        margin-right: 0.5rem;
+        color: $fontColor;
+      }
+    }
+    i {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+//product details
+.product-details {
+  margin-top: 2rem;
+  .product-image {
+    width: 100%;
+    img {
+      width: 100%;
+      border-radius: 0.2rem;
+      object-fit: cover;
+    }
+  }
+  .product-sub-image {
+    margin-top: 1rem;
+    width: 100%;
+    height: 5rem;
+    position: relative;
+    cursor: pointer;
+    span {
+      position: absolute;
+      font-weight: 500;
+      color: $white;
+      left: 50%;
+      top: 50%;
+      z-index: 11;
+      transform: translate(-50%, -50%);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-shadow: 0 0 0 1px #d7d7d7;
+      border-radius: 0.2rem;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      background: transparentize($color: $themeColor, $amount: 0.75);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+  .product-info {
+    h4 {
+      margin-top: 0;
+      color: $themeColor;
+    }
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .product-desc {
+      margin: 2rem 0 0;
+      max-height: 25rem;
+      overflow: auto;
+      p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+    .product-btn {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      width: 100%;
+      .btn {
+        width: 48%;
+        &:first-child {
+          background-color: $themeColor;
+        }
+      }
+    }
+    .pallet {
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      margin: auto;
+      margin-top: 1rem;
+    }
+  }
+}
+
+//checkout
+.checkout {
+  margin-top: 1rem;
+  .checkout-header {
+    border-bottom: 2px solid $mutedWhite;
+    padding: 2rem 0;
+    ul {
+      display: flex;
+      justify-content: center;
+      margin: 0 10rem;
+      position: relative;
+      @media screen and (max-width: 768px) {
+        margin: 0 5rem;
+      }
+      @media screen and (max-width: 600px) {
+        margin: 0;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 24%;
+        width: 100%;
+        height: 2px;
+        background: $themeColor;
+      }
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 2rem;
+        cursor: pointer;
+        @media screen and (max-width: 600px) {
+          margin: 0 1rem;
+        }
+        span {
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+          position: relative;
+          z-index: 11;
+          text-transform: uppercase;
+          white-space: nowrap;
+          @media screen and (max-width: 500px) {
+            font-size: 85%;
+          }
+          &.position {
+            color: $themeColor;
+            display: inline-block;
+            padding: 1rem;
+            border: 2px solid $themeColor;
+            border-radius: 50%;
+            width: 1rem;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $white;
+          }
+          &.active {
+            background: $themeColor;
+            color: $white;
+          }
+          &.done {
+            background: $mutedWhite;
+          }
+          &.title {
+            color: #828282;
+          }
+        }
+      }
+    }
+  }
+  .checkout-body {
+    .customer-details {
+      padding-top: 2.5rem;
+    }
+    .payment-method {
+      padding-top: 2.5rem;
+      position: relative;
+      .payment-options {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0.5rem;
+        margin-bottom: 1.5rem;
+        p {
+          margin-right: 1rem;
+        }
+      }
+    }
+    .products {
+      margin-bottom: 1rem;
+      ul {
+        li {
+          &:last-child {
+            & > div {
+              border-bottom: none;
+              font-weight: 500;
+              background: $mutedWhite;
+              margin-bottom: 1.5rem;
+            }
+          }
+          & > div {
+            padding: 1rem;
+            border-bottom: 2px solid $mutedWhite;
+            display: flex;
+
+            img {
+              width: 4rem;
+              height: 4rem;
+              border-radius: 0.2rem;
+              margin-right: 1rem;
+              object-fit: cover;
+            }
+            p {
+              display: flex;
+              flex-direction: column;
+              a {
+                margin-bottom: 0.4rem;
+                font-weight: 500;
+                font-size: 1.1rem;
+              }
+              & > span {
+                font-size: 90%;
+                span {
+                  color: #828282;
+                  margin-right: 0.7rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .completed {
+      width: 100%;
+      margin-bottom: 1rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
