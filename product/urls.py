@@ -7,5 +7,6 @@ urlpatterns = [
     path('images/<id>', get_product_images, name="product-images"),
     path('addtocard', add_to_cart, name="add-to-cart"),
     path('invoice', invoice, name="invoice"),
-    path('checkout', checkout, name="checkout")
+    path('checkout', checkout, name="checkout"),
+    path('user-invoice', userInvoice, name="userInvoice"),
 ]

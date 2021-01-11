@@ -38,3 +38,6 @@ def invoice(request):
 
 def checkout(request):
     return render(request, 'checkout.html')
+
+def userInvoice(request):
+    return render(request, 'userInvoice.html')
