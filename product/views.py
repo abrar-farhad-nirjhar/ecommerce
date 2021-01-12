@@ -41,3 +41,6 @@ def checkout(request):
 
 def userInvoice(request):
     return render(request, 'userInvoice.html')
+    
+def managerInvoice(request):
+    return render(request, 'managerInvoice.html')

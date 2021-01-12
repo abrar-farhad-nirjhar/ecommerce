@@ -9,4 +9,5 @@ urlpatterns = [
     path('invoice', invoice, name="invoice"),
     path('checkout', checkout, name="checkout"),
     path('user-invoice', userInvoice, name="userInvoice"),
+    path('manager-invoice', managerInvoice, name="managerInvoice"),
 ]

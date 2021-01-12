@@ -516,8 +516,12 @@ footer {
     }
   }
 }
-
+.invoice-section {
+  background: #f7f7f7;
+}
 .invoice {
+  background: $white;
+  min-width: 700px;
   width: 992px;
   margin: auto;
   border: 2px solid $mutedWhite;
@@ -528,9 +532,22 @@ footer {
     }
   }
   .right-side {
+    margin-top: 2rem;
+    p {
+      margin-bottom: 0.5rem;
+    }
+    span {
+      font-weight: 500;
+      font-size: 2.3rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: $themeColor;
+      margin-bottom: 1.5rem;
+    }
     img {
-      width: 10rem;
-      margin-bottom: 0.8rem;
+      width: 4rem;
+      margin-right: 0.8rem;
     }
     text-align: right;
   }
@@ -545,15 +562,45 @@ footer {
       border-radius: 0.3rem;
       object-fit: cover;
     }
-    .product-pallet {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      margin: auto;
+  }
+  .product-desc {
+    margin: 2rem 0;
+    .product-item {
+      border-bottom: 2px solid $mutedWhite;
+      h4 {
+        color: $themeColor;
+      }
+      img {
+        width: 80%;
+        margin: auto;
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 0.3rem;
+      }
+      .collapsible-body {
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          span {
+            margin-left: 0.5rem;
+          }
+          .palette {
+            height: 1.5rem;
+            width: 5rem;
+            display: inline-block;
+            margin: 0 3rem 0 1rem;
+            border-radius: 0.3rem;
+          }
+        }
+      }
     }
   }
 }
 @media print {
+  .invoice-section {
+    background: $white;
+  }
   .invoice {
     border: none;
   }
