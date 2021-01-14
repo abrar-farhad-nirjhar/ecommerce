@@ -98,7 +98,7 @@
             <ul>
               <li id="customer-details">
                 <span class="position active">1</span
-                ><span class="title">Customer Details</span>
+                ><span class="title">Checkout Details</span>
               </li>
               <li id="payment-method">
                 <span class="position">2</span
@@ -259,41 +259,80 @@
               </h4>
               <img src="{% static 'assets/completed.png' %}" alt="" />
               <div class="center">
-                <button class="waves-effect waves-light btn-large brown">
-                  Go Back
-                </button>
+                <a
+                  href="/user-invoice"
+                  class="waves-effect waves-light btn-large brown"
+                >
+                  Go to invoice
+                </a>
               </div>
             </div>
             <div class="products">
               <ul>
                 <li>
                   <div>
-                    <img
-                      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
-                      alt=""
-                    />
-                    <p>
-                      <a href="#">This product title</a>
-                      <span
-                        ><span>Category : Wallpaper</span
-                        ><span>Price : $104</span></span
-                      >
-                    </p>
+                    <span>
+                      <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
+                        alt=""
+                      />
+                      <p>
+                        <a href="#">This product title</a>
+                        <span
+                          ><span>Category : Wallpaper</span
+                          ><span>Price : $104</span></span
+                        >
+                      </p>
+                    </span>
+                    <div class="count">
+                      <div class="number">
+                        <div class="decrement teal">
+                          <i class="fas fa-minus"></i>
+                        </div>
+                        <input
+                          type="number"
+                          min="1"
+                          class="cart-number"
+                          value="1"
+                        />
+                        <div class="increment teal">
+                          <i class="fas fa-plus"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img
-                      src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                      alt=""
-                    />
-                    <p>
-                      <a href="#">This product title</a>
-                      <span
-                        ><span>Category : Wallpaper</span
-                        ><span>Price : $104</span></span
-                      >
-                    </p>
+                    <span>
+                      <img
+                        src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                        alt=""
+                      />
+                      <p>
+                        <a href="#">This product title</a>
+                        <span
+                          ><span>Category : Wallpaper</span
+                          ><span>Price : $104</span></span
+                        >
+                      </p>
+                    </span>
+                    <div class="count">
+                      <div class="number">
+                        <div class="decrement teal">
+                          <i class="fas fa-minus"></i>
+                        </div>
+                        <input
+                          type="number"
+                          min="1"
+                          class="cart-number"
+                          value="1"
+                        />
+                        <div class="increment teal">
+                          <i class="fas fa-plus"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </li>
                 <li>
@@ -422,6 +461,21 @@
         paymentPosition.classList.remove('active')
         paymentPosition.innerHTML = '<i class="fas fa-check"></i>'
       })
+
+      //product quantity selector
+      const cartNumbers = document.querySelectorAll('.cart-number')
+      const increments = document.querySelectorAll('.increment')
+      const decrements = document.querySelectorAll('.decrement')
+      increments.forEach((increment) =>
+        increment.addEventListener('click', function () {
+          this.previousElementSibling.stepUp(1)
+        })
+      )
+      decrements.forEach((decrement) =>
+        decrement.addEventListener('click', function () {
+          this.nextElementSibling.stepDown(1)
+        })
+      )
     </script>
   </body>
 </html>
