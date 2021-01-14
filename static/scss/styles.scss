@@ -151,6 +151,24 @@ header {
         width: 100%;
         justify-content: flex-end;
       }
+      a {
+        position: relative;
+        .count {
+          position: absolute;
+          right: 0.5rem;
+          top: -0.5rem;
+          border-radius: 50%;
+          padding: 0.3rem;
+          font-size: 80%;
+          background: $themeColor;
+          color: $white;
+          height: 1.1rem;
+          width: 0.9rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
       i {
         cursor: pointer;
         margin-right: 1rem;
@@ -220,10 +238,17 @@ header {
       object-fit: cover;
     }
   }
-  .sub-banner-image {
-    width: 100%;
-    height: 10rem;
-    object-fit: cover;
+  .swiper-slide {
+    position: relative;
+    .sub-banner-image {
+      width: 100%;
+      border: 1px solid $mutedWhite;
+    }
+    .btn {
+      position: absolute;
+      left: 1rem;
+      bottom: 2rem;
+    }
   }
 }
 
@@ -357,6 +382,41 @@ footer {
       justify-content: space-between;
       margin-bottom: 1rem;
       width: 100%;
+      .number {
+        position: relative;
+        width: 2rem;
+        .increment,
+        .decrement {
+          position: absolute;
+          cursor: pointer;
+          height: 106%;
+          background: $mutedWhite;
+          top: 0;
+        }
+        .increment {
+          right: -3rem;
+          padding: 0.4rem 0.5rem;
+        }
+        .decrement {
+          left: -1.8rem;
+          padding: 0.4rem 0.5rem;
+        }
+        input {
+          border: 1px solid $mutedWhite;
+          height: 100%;
+          width: 100%;
+          appearance: none;
+          padding: 0 0.5rem;
+          &:focus {
+            border-bottom: 1px;
+            border-color: #26a69a;
+          }
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            display: none;
+          }
+        }
+      }
       .btn {
         width: 48%;
         &:first-child {

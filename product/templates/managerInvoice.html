@@ -1,256 +1,154 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manager Invoice</title>
 
-    <!-- fontawesome cdn -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!-- Materialize icon font -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Custom css -->
-    <link rel="stylesheet" href="{% static 'dist/styles.min.css' %}" />
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Custom JavaScript -->
-  </head>
-  <body>
-    <section class="invoice-section">
-      <div class="invoice">
-        <div class="row">
-          <div class="col s6">
-            <div class="left-side">
-              <h4>Recipient</h4>
-              <p><strong>Name : </strong>Mohammad Sayem</p>
-              <p><strong>Email : </strong>msayem089@gmail.com</p>
-              <p>
-                <strong>Address : </strong>Boluardighi West Side, Chattogram
-              </p>
-              <p><strong>Phone : </strong>+8801515-675571</p>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manager Invoice</title>
+
+  <!-- fontawesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!-- Materialize icon font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Custom css -->
+  <link rel="stylesheet" href="{% static 'dist/styles.min.css' %}" />
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JavaScript -->
+</head>
+
+<body>
+  <section class="invoice-section">
+    <div class="invoice">
+      <div class="row">
+        <div class="col s6">
+          <div class="left-side">
+            <h4>Recipient</h4>
+            <p><strong>Name : </strong>{{order.first_name}} {{order.last_name}}</p>
+            <p><strong>Email : </strong>{{order.email_name}}</p>
+            <p>
+              <strong>Address : </strong>{{order.address}}
+            </p>
+            <p><strong>Phone : </strong>+8801515-675571</p>
           </div>
-          <div class="col s6">
-            <div class="right-side">
-              <span><img src="media/Legame.png" alt="" />LEGAME</span>
-              <p><strong>Order Date : </strong>#df33d-435ad</p>
-              <p><strong>Total Products : </strong>3</p>
-            </div>
+        </div>
+        <div class="col s6">
+          <div class="right-side">
+            <span><img src="media/Legame.png" alt="" />LEGAME</span>
+            <p><strong>Order Date : </strong>#df33d-435ad</p>
+            <p><strong>Total Products : </strong>{{count}}</p>
           </div>
-          <div class="col s12">
-            <div class="product-desc">
-              <div class="product-item">
-                <h4>
-                  <span style="margin-right: 0.5rem">1.</span>This is product
-                  title
-                </h4>
-                <ul class="collapsible z-depth-0">
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_front</i>Front
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette teal"></span>
-                        <strong>Color Code : </strong
-                        ><span class="teal-text">#009688</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_back</i>Back
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette indigo"></span>
-                        <strong>Color Code : </strong
-                        ><span class="indigo-text">#3f51b5</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip</i>Side
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette red"></span>
-                        <strong>Color Code : </strong
-                        ><span class="red-text">#F44336</span>
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="product-item">
-                <h4>
-                  <span style="margin-right: 0.5rem">2.</span>This is product
-                  title
-                </h4>
-                <ul class="collapsible z-depth-0">
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_front</i>Front
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette teal"></span>
-                        <strong>Color Code : </strong
-                        ><span class="teal-text">#009688</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_back</i>Back
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette indigo"></span>
-                        <strong>Color Code : </strong
-                        ><span class="indigo-text">#3f51b5</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip</i>Side
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette red"></span>
-                        <strong>Color Code : </strong
-                        ><span class="red-text">#F44336</span>
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="product-item">
-                <h4>
-                  <span style="margin-right: 0.5rem">3.</span>This is product
-                  title
-                </h4>
-                <ul class="collapsible z-depth-0">
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_front</i>Front
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette teal"></span>
-                        <strong>Color Code : </strong
-                        ><span class="teal-text">#009688</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip_to_back</i>Back
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette indigo"></span>
-                        <strong>Color Code : </strong
-                        ><span class="indigo-text">#3f51b5</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">
-                      <i class="material-icons">flip</i>Side
-                    </div>
-                    <div class="collapsible-body">
-                      <img
-                        src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                        alt=""
-                      />
-                      <p>
-                        <strong>Color : </strong>
-                        <span class="palette red"></span>
-                        <strong>Color Code : </strong
-                        ><span class="red-text">#F44336</span>
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+        </div>
+        <div class="col s12">
+          <div class="product-desc">
+            {% for element in extra %}
+            <div class="product-item">
+              <h4>
+                <span style="margin-right: 0.5rem">{{ forloop.counter }}.</span>{{element.product.name}}
+              </h4>
+              <ul class="collapsible z-depth-0">
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">flip_to_front</i>Front
+                  </div>
+                  <div class="collapsible-body">
+                    <img src="{{element.element.front}}" alt="" />
+                    <p>
+                    <div class="center-align">Custom Colors</div>
+                    <table>
+                      <tr>
+                        <th>Segment Name</th>
+                        <th>Color Code</th>
+                        <th>Color Preview</th>
+                      </tr>
+
+                      {% for k,v in element.front.items %}
+
+                      <tr>
+                        <td>{{k}}</td>
+                        <td>{{v}}</td>
+                        <td>
+                          <div style="background-color:{{v}}; max-width:40px; min-height:10px "></div>
+                        </td>
+
+                      </tr>
+
+
+                      {% endfor %}
+
+                    </table>
+
+
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header">
+                    <i class="material-icons">flip_to_back</i>Back
+                  </div>
+                  <div class="collapsible-body">
+                    <img src="{{element.element.back}}" alt="" />
+                    <p>
+                    <div class="center-align">Custom Colors</div>
+                    <table>
+                      <tr>
+                        <th>Segment Name</th>
+                        <th>Color Code</th>
+                        <th>Color Preview</th>
+                      </tr>
+
+                      {% for k,v in element.back.items %}
+
+                      <tr>
+                        <td>{{k}}</td>
+                        <td>{{v}}</td>
+                        <td>
+                          <div style="background-color:{{v}}; max-width:40px; min-height:10px "></div>
+                        </td>
+
+                      </tr>
+
+
+
+                      {% endfor %}
+
+                    </table>
+
+
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
             </div>
-            <div class="right">
-              <button class="waves-effect waves-light btn-large brown print">
-                Print
-              </button>
-            </div>
+            {% endfor %}
+          </div>
+          <div class="right">
+            <button class="waves-effect waves-light btn-large brown print">
+              Print
+            </button>
           </div>
         </div>
       </div>
-    </section>
-    <script>
-      //activating collapsible
-      document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.collapsible')
-        var instances = M.Collapsible.init(elems)
-      })
-      //print selector
-      const print = document.querySelector('.print')
-      print.addEventListener('click', function () {
-        window.print()
-      })
-    </script>
-  </body>
+    </div>
+  </section>
+  <script>
+    //activating collapsible
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.collapsible')
+      var instances = M.Collapsible.init(elems)
+    })
+    //print selector
+    const print = document.querySelector('.print')
+    print.addEventListener('click', function () {
+      window.print()
+    })
+  </script>
+</body>
+
 </html>

@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marnon E-commerce Site</title>
+    <title>Legame</title>
 
     <!-- fontawesome cdn -->
     <link
@@ -23,6 +23,12 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <!-- swiper js -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Custom css -->
     <link rel="stylesheet" href="{% static 'dist/styles.min.css' %}" />
     <!-- Compiled and minified JavaScript -->
@@ -30,6 +36,7 @@
     <!-- Custom JavaScript -->
     <script src="./scripts.js" defer></script>
   </head>
+
   <body>
     <header>
       <div class="top-header">
@@ -65,7 +72,19 @@
         <div class="right-top-header">
           <i class="material-icons hide-on-large-only menu-btn">menu</i>
           <i class="material-icons">favorite_border</i>
-          <i class="material-icons">shopping_cart</i>
+          {% if user.is_authenticated %}
+
+          <a href="{% url 'checkout' %}"
+            ><i class="material-icons">shopping_cart</i
+            ><span class="count">4</span></a
+          >
+          {% else %}
+
+          <a href="{% url 'signin' %}"
+            ><i class="material-icons">shopping_cart</i></a
+          >
+
+          {% endif %}
           <div class="search hide-search">
             <div class="search-box"><input type="text" /></div>
           </div>
@@ -84,12 +103,12 @@
       <div class="overlay hide hide-on-large-only"></div>
       <aside class="sidebar">
         <ul>
-          <li><a href="#" class="active">Mobile </a></li>
-          <li><a href="#">Laptop</a></li>
-          <li><a href="#">Watch</a></li>
-          <li><a href="#">Headphone</a></li>
-          <li><a href="#">Monitor</a></li>
-          <li><a href="#">TV</a></li>
+          <li><a href="#" class="active">Shoes</a></li>
+          <li><a href="#">Bags</a></li>
+          <li><a href="#">Wallets</a></li>
+          <li><a href="#">Jackets</a></li>
+          <li><a href="#">Belts</a></li>
+          <li><a href="#">Boots</a></li>
         </ul>
       </aside>
       <div class="right-side">
@@ -98,39 +117,56 @@
             <div class="slider col s12">
               <div class="carousel carousel-slider">
                 <a class="carousel-item" href="#one!"
-                  ><img
-                    src="https://images.unsplash.com/photo-1530914547840-346c183410de?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                  ><img src="../static/assets/slider1.jpg"
                 /></a>
                 <a class="carousel-item" href="#two!"
-                  ><img
-                    src="https://images.unsplash.com/photo-1512303309580-3c7578b8fc3d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=744&q=80"
+                  ><img src="../static/assets/slider2.jpg"
                 /></a>
                 <a class="carousel-item" href="#three!"
-                  ><img
-                    src="https://images.unsplash.com/photo-1531895861208-8504b98fe814?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"
+                  ><img src="../static/assets/slider3.jpg"
                 /></a>
               </div>
             </div>
-            <div class="col s12 m4">
-              <img
-                class="sub-banner-image"
-                src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                alt=""
-              />
-            </div>
-            <div class="col s12 m4">
-              <img
-                class="sub-banner-image"
-                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1378&q=80"
-                alt=""
-              />
-            </div>
-            <div class="col s12 m4">
-              <img
-                class="sub-banner-image"
-                src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                alt=""
-              />
+            <div class="col s12">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      class="sub-banner-image"
+                      src="../static/assets/shoe.jpeg"
+                      alt=""
+                    />
+                    <button class="btn waves-effect waves-light brown">
+                      Order now
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      class="sub-banner-image"
+                      src="../static/assets/bag.jpeg"
+                      alt=""
+                    />
+                    <button class="btn waves-effect waves-light brown">
+                      Order now
+                    </button>
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      class="sub-banner-image"
+                      src="../static/assets/jacket.jpeg"
+                      alt=""
+                    />
+                    <button class="btn waves-effect waves-light brown">
+                      Order now
+                    </button>
+                  </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -164,7 +200,6 @@
                     "
                   >
                     <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
                   </p>
                 </div>
                 <div class="card-reveal">
@@ -204,280 +239,6 @@
                     "
                   >
                     <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
-                  </p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"
-                    >Descriptions<i class="material-icons right">close</i></span
-                  >
-                  <p>
-                    Here is some more information about this product that is
-                    only revealed once clicked on.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    class="activator"
-                    src="https://images.unsplash.com/photo-1579532649672-13fac8cde626?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMTMyNDgyM3x8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  />
-                  <a
-                    class="btn-floating halfway-fab waves-effect waves-light pulse brown"
-                    ><i class="material-icons">shopping_cart</i></a
-                  >
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><i class="material-icons right">more_vert</i></span
-                  >
-                  <p><a href="#">This is a product</a></p>
-                  <p
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      margin-top: 1rem;
-                    "
-                  >
-                    <strong>$250</strong>
-                    <strong class="brown-text">Wallpaper</strong>
                   </p>
                 </div>
                 <div class="card-reveal">
@@ -535,8 +296,26 @@
       document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.carousel')
         var instances = M.Carousel.init(elems, options)
-      })
+        // custom function for autoplaying
+        let indicatorItems = document.querySelectorAll(
+            '.carousel .indicator-item'
+          ),
+          slideTime = 4000,
+          activeClass = 'active'
 
+        setInterval(() => {
+          indicatorItems.forEach((el) => {
+            if (el.classList.contains(activeClass)) {
+              sib = el.nextElementSibling
+              if (sib == null) {
+                indicatorItems[0].click()
+              } else {
+                sib.click()
+              }
+            }
+          })
+        }, slideTime)
+      })
       //select bar activation
       document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('select')
@@ -588,6 +367,36 @@
       overlay.addEventListener('click', function () {
         sidebar.classList.remove('show')
         overlay.classList.add('hide')
+      })
+
+      //activating swiper js
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 35,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
       })
     </script>
   </body>
